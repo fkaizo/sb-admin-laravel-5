@@ -1,5 +1,5 @@
 @extends ('layouts.dashboard')
-@section('page_heading','Form')
+@section('page_heading','Cadastro Gestor Owner')
 
 @section('section')
 <div class="col-sm-12">

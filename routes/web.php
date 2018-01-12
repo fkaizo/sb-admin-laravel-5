@@ -16,63 +16,111 @@ Route::get('/', function()
 	return view('home');
 });
 
-Route::get('/charts', function()
+Route::get('/owner/gestor/list', function()
 {
-	return view('mcharts');
+	return view('table-owner-gestor');
 });
 
-Route::get('/tables', function()
+Route::get('/owner/gestor/new', function()
 {
-	return view('table');
+	return view('form-owner-gestor');
 });
 
-Route::get('/forms', function()
+Route::get('/owner/franchise/new', function()
 {
-	return view('form');
+	return view('form-owner-franchise');
 });
 
-Route::get('/grid', function()
+Route::get('/owner/franchise/list', function()
 {
-	return view('grid');
+	return view('table-owner-franchise');
 });
 
-Route::get('/buttons', function()
+Route::get('/franchise/cliente/new', function()
 {
-	return view('buttons');
+	return view('form-franchise-cliente');
 });
 
-
-Route::get('/icons', function()
+Route::get('/franchise/cliente/list', function()
 {
-	return view('icons');
+	return view('table-franchise-cliente');
+});
+Route::get('/franchise/gestor/new', function()
+{
+	return view('form-franchise-gestor');
 });
 
-Route::get('/panels', function()
+Route::get('/franchise/gestor/list', function()
 {
-	return view('panel');
+	return view('table-franchise-gestor');
 });
 
-Route::get('/typography', function()
+Route::get('/franchise/veiculo/new', function()
 {
-	return view('typography');
+	return view('form-franchise-veiculo');
 });
 
-Route::get('/notifications', function()
+Route::get('/franchise/veiculo/list', function()
 {
-	return view('notifications');
+	return view('table-franchise-veiculo');
 });
+// Route::get('/charts', function()
+// {
+// 	return view('mcharts');
+// });
 
-Route::get('/blank', function()
-{
-	return view('blank');
-});
+// Route::get('/tables', function()
+// {
+// 	return view('table');
+// });
 
-Route::get('/login', function()
-{
-	return view('login');
-});
+// Route::get('/forms', function()
+// {
+// 	return view('form');
+// });
 
-Route::get('/documentation', function()
-{
-	return view('documentation');
-});
+// Route::get('/grid', function()
+// {
+// 	return view('grid');
+// });
+
+// Route::get('/buttons', function()
+// {
+// 	return view('buttons');
+// });
+
+
+// Route::get('/icons', function()
+// {
+// 	return view('icons');
+// });
+
+// Route::get('/panels', function()
+// {
+// 	return view('panel');
+// });
+
+// Route::get('/typography', function()
+// {
+// 	return view('typography');
+// });
+
+// Route::get('/notifications', function()
+// {
+// 	return view('notifications');
+// });
+
+// Route::get('/blank', function()
+// {
+// 	return view('blank');
+// });
+
+// Route::get('/login', function()
+// {
+// 	return view('login');
+// });
+
+// Route::get('/documentation', function()
+// {
+// 	return view('documentation');
+// });
