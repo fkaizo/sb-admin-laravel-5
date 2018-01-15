@@ -114,8 +114,8 @@ CREATE TABLE `owner_manager` (
   PRIMARY KEY (`id`),
   KEY `id_owner_idx` (`id_owner`),
   KEY `id_pessoa_idx` (`id_pessoa`),
-  CONSTRAINT `id_owner` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `id_owner_owner_manager` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_pessoa_owner_manager` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,8 +137,8 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`id`),
   KEY `id_endereco_idx` (`id_endereco`),
   KEY `id_foto_idx` (`id_foto`),
-  CONSTRAINT `id_endereco` FOREIGN KEY (`id_endereco`) REFERENCES `Endereco` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_foto` FOREIGN KEY (`id_foto`) REFERENCES `foto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `id_endereco_pessoa` FOREIGN KEY (`id_endereco`) REFERENCES `Endereco` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_foto_pessoa` FOREIGN KEY (`id_foto`) REFERENCES `foto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -153,6 +153,25 @@ CREATE TABLE `telefone` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `telefone_pessoa`
+--
+
+DROP TABLE IF EXISTS `telefone_pessoa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `telefone_pessoa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_telefone` int(11) DEFAULT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_telefone_idx` (`id_telefone`),
+  KEY `id_pessoa_idx` (`id_pessoa`),
+  CONSTRAINT `id_telefone_telefone_pessoa` FOREIGN KEY (`id_telefone`) REFERENCES `telefone` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_pessoa_telefone_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
