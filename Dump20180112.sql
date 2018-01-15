@@ -49,6 +49,77 @@ CREATE TABLE `foto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `franchise`
+--
+
+DROP TABLE IF EXISTS `franchise`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `franchise` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_owner` int(11) DEFAULT NULL,
+  `nome` varchar(200) DEFAULT NULL,
+  `descricao` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_owner_franchise_idx` (`id_owner`),
+  CONSTRAINT `id_owner_franchise` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `franchise_manager`
+--
+
+DROP TABLE IF EXISTS `franchise_manager`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `franchise_manager` (
+  `id` int(11) NOT NULL,
+  `id_franchise` int(11) DEFAULT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_franchise_franchise_manager_idx` (`id_franchise`),
+  KEY `id_pessoa_franchise_manager_idx` (`id_pessoa`),
+  CONSTRAINT `id_franchise_franchise_manager` FOREIGN KEY (`id_franchise`) REFERENCES `franchise` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_pessoa_franchise_manager` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `owner`
+--
+
+DROP TABLE IF EXISTS `owner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `owner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) DEFAULT NULL,
+  `descricao` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `owner_manager`
+--
+
+DROP TABLE IF EXISTS `owner_manager`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `owner_manager` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_owner` int(11) DEFAULT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_owner_idx` (`id_owner`),
+  KEY `id_pessoa_idx` (`id_pessoa`),
+  CONSTRAINT `id_owner` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `pessoa`
 --
 
@@ -94,4 +165,4 @@ CREATE TABLE `telefone` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-12  7:34:16
+-- Dump completed on 2018-01-15  7:28:18
