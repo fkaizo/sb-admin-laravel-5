@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Endereco`
+-- Table structure for table `endereco`
 --
 
-DROP TABLE IF EXISTS `Endereco`;
+DROP TABLE IF EXISTS `endereco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Endereco` (
+CREATE TABLE `endereco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cep` varchar(45) DEFAULT NULL,
   `logradouro` varchar(200) DEFAULT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE `pessoa` (
   PRIMARY KEY (`id`),
   KEY `id_endereco_idx` (`id_endereco`),
   KEY `id_foto_idx` (`id_foto`),
-  CONSTRAINT `id_endereco_pessoa` FOREIGN KEY (`id_endereco`) REFERENCES `Endereco` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_endereco_pessoa` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `id_foto_pessoa` FOREIGN KEY (`id_foto`) REFERENCES `foto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
