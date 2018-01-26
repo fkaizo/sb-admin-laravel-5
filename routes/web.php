@@ -11,6 +11,10 @@
 |
 */
 
+
+Route::resource('/ownerManager', 'OwnerManagerController');
+Route::resource('/ownerFranchise', 'OwnerFranchiseController');
+
 Route::get('/', function()
 {
 	return view('home');

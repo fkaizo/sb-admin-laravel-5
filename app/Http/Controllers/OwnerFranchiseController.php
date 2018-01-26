@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Owner;
+use Illuminate\Http\Request;
 
-class OwnerManagerController extends Controller
+class OwnerFranchiseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class OwnerManagerController extends Controller
     public function index()
     {
         $owner = Owner::find(1);
-        $managers = $owner->managers()->paginate(10);
-        return view('owner.table.gestor')
+        $franchises = $owner->franchises()->paginate(10);
+        return view('owner.table.franchise')
             ->with(compact('owner'))
-            ->with(compact('managers'))
+            ->with(compact('franchises'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -46,10 +46,10 @@ class OwnerManagerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Franchise  $franchise
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Franchise $franchise)
     {
         //
     }
@@ -57,10 +57,10 @@ class OwnerManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Franchise  $franchise
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Franchise $franchise)
     {
         //
     }
@@ -69,10 +69,10 @@ class OwnerManagerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Franchise  $franchise
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Franchise $franchise)
     {
         //
     }
@@ -80,10 +80,10 @@ class OwnerManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Franchise  $franchise
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Franchise $franchise)
     {
         //
     }

@@ -48,17 +48,17 @@
 						<a href="{{ url ('') }}">
 							<i class="fa fa-home fa-fw"></i> Home</a>
 					</li>
-					<li {{ (Request::is( '*ownerManager') ? 'class="active"' : '') }} >
+					<li>
 						<a href="#">
 							<i class="fa fa-cog fa-fw"></i> Owner
 							<span class="fa arrow"></span>
 						</a>
 						<ul class="nav nav-second-level">
-							<li>
+							<li {{ (Request::is( '*ownerManager') ? 'class="active"' : '') }}>
 								<a href="{{ url('/ownerManager') }}">Gestores</a>
 							</li>
-							<li>
-								<a href="{{ url('/owner/franchise/list') }}">Franchises</a>
+							<li {{ (Request::is( '*ownerFranchise') ? 'class="active"' : '') }}>
+								<a href="{{ url('/ownerFranchise') }}">Franchises</a>
 							</li>
 						</ul>
 						<!-- /.nav-second-level -->
