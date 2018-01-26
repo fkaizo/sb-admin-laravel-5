@@ -18,109 +18,49 @@ Route::get('/', function()
 
 Route::get('/owner/gestor/list', function()
 {
-	return view('table-owner-gestor');
+	return view('owner.table.gestor');
 });
 
 Route::get('/owner/gestor/new', function()
 {
-	return view('form-owner-gestor');
+	return view('owner.form.gestor');
 });
 
 Route::get('/owner/franchise/new', function()
 {
-	return view('form-owner-franchise');
+	return view('owner.form.franchise');
 });
 
 Route::get('/owner/franchise/list', function()
 {
-	return view('table-owner-franchise');
+	return view('owner.table.franchise');
 });
 
 Route::get('/franchise/cliente/new', function()
 {
-	return view('form-franchise-cliente');
+	return view('franchise.form.cliente');
 });
 
 Route::get('/franchise/cliente/list', function()
 {
-	return view('table-franchise-cliente');
+	return view('franchise.table.cliente');
 });
 Route::get('/franchise/gestor/new', function()
 {
-	return view('form-franchise-gestor');
+	return view('franchise.form.gestor');
 });
 
 Route::get('/franchise/gestor/list', function()
 {
-	return view('table-franchise-gestor');
+	return view('franchise.table.gestor');
 });
 
 Route::get('/franchise/veiculo/new', function()
 {
-	return view('form-franchise-veiculo');
+	return view('franchise.form.veiculo');
 });
 
 Route::get('/franchise/veiculo/list', function()
 {
-	return view('table-franchise-veiculo');
+	return view('franchise.table.veiculo');
 });
-// Route::get('/charts', function()
-// {
-// 	return view('mcharts');
-// });
-
-// Route::get('/tables', function()
-// {
-// 	return view('table');
-// });
-
-// Route::get('/forms', function()
-// {
-// 	return view('form');
-// });
-
-// Route::get('/grid', function()
-// {
-// 	return view('grid');
-// });
-
-// Route::get('/buttons', function()
-// {
-// 	return view('buttons');
-// });
-
-
-// Route::get('/icons', function()
-// {
-// 	return view('icons');
-// });
-
-// Route::get('/panels', function()
-// {
-// 	return view('panel');
-// });
-
-// Route::get('/typography', function()
-// {
-// 	return view('typography');
-// });
-
-// Route::get('/notifications', function()
-// {
-// 	return view('notifications');
-// });
-
-// Route::get('/blank', function()
-// {
-// 	return view('blank');
-// });
-
-// Route::get('/login', function()
-// {
-// 	return view('login');
-// });
-
-// Route::get('/documentation', function()
-// {
-// 	return view('documentation');
-// });
