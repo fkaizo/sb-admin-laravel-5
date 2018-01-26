@@ -44,7 +44,7 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
-					<li {{ (Request::is( '/') ? 'class="active"' : '') }}>
+					<li {{ (Request::is('/') ? 'class="active"' : '') }}>
 						<a href="{{ url ('') }}">
 							<i class="fa fa-home fa-fw"></i> Home</a>
 					</li>
@@ -54,10 +54,10 @@
 							<span class="fa arrow"></span>
 						</a>
 						<ul class="nav nav-second-level">
-							<li {{ (Request::is( '*ownerManager') ? 'class="active"' : '') }}>
+							<li {{ (Request::is('*ownerManager') ? 'class="active"' : '') }}>
 								<a href="{{ url('/ownerManager') }}">Gestores</a>
 							</li>
-							<li {{ (Request::is( '*ownerFranchise') ? 'class="active"' : '') }}>
+							<li {{ (Request::is('*ownerFranchise') ? 'class="active"' : '') }}>
 								<a href="{{ url('/ownerFranchise') }}">Franchises</a>
 							</li>
 						</ul>

@@ -13,8 +13,8 @@
                                     <i class="fa fa-certificate fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">4</div>
-                                    <div>Franchises</div>
+                                    <div class="huge">{{$franchiseCount}}</div>
+                                    <div>Franchise{{ ($franchiseCount>1)?'s':''}}</div>
                                 </div>
                             </div>
                         </div>
