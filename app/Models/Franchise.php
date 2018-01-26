@@ -15,4 +15,8 @@ class Franchise extends Model
     public function owner(){
         return $this->belongsTo("App\Models\Owner", "id_owner", "id");
     }
+
+    public function clients(){
+        return $this->hasMany("App\Models\Client", "id_franchise", "id");
+    }
 }
