@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class OwnerFranchiseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','ownerManger']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

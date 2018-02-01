@@ -4,7 +4,7 @@
 <div class="col-sm-12">
 	<div class="row">
 		<div class="col-sm-12">
-			<a href="{{ url('/owner/gestor/new')}}">
+			<a href="{{ route('ownerManager.create')}}">
 				@include('widgets.button', array('value'=>'CADASTRAR', 'class'=>'primary'))
 			</a>
 		</div>

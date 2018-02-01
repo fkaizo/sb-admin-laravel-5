@@ -7,6 +7,12 @@ use App\Models\Owner;
 
 class OwnerManagerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','ownerManger']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +35,7 @@ class OwnerManagerController extends Controller
      */
     public function create()
     {
-        //
+        return view('owner.form.gestor');
     }
 
     /**

@@ -31,7 +31,7 @@
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="{{ url ('login') }}">
+						<a href="{{ url ('logout') }}">
 							<i class="fa fa-sign-out fa-fw"></i> Logout</a>
 					</li>
 				</ul>

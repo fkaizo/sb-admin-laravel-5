@@ -27,6 +27,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     }
 
     private function FranchiseMenuComposer(){
-        view()->composer('layouts.dashboard', 'App\Http\ViewComposers\FranchiseMenuComposer@compose');
+        view()->creator('layouts.dashboard', 'App\Http\ViewComposers\FranchiseMenuComposer@compose');
     }
 }

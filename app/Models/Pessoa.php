@@ -23,4 +23,16 @@ class Pessoa extends Model
     public function foto(){
         return $this->hasOne("App\Models\Foto", "id", "id_foto");
     }
+
+    public function ownerManager(){
+        return $this->belongsToMany("App\Models\Owner", "owner_manager", "id_pessoa", "id_owner");
+    }
+
+    public function franchiseManager(){
+        return $this->belongsToMany("App\Models\Franchise", "franchise_manager", "id_pessoa", "id_franchise");
+    }
+
+    public function user(){
+        return $this->hasOne("App\User", "email","email");
+    }
 }

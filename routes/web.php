@@ -15,26 +15,18 @@
 Route::resource('/ownerManager', 'OwnerManagerController');
 Route::resource('/ownerFranchise', 'OwnerFranchiseController');
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', 'DashboardController@index')->name("home");
 
-Route::get('/owner/gestor/list', function()
-{
-	return view('owner.table.gestor');
-});
+//auth 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Auth::routes();
 
-Route::get('/owner/gestor/new', function()
-{
-	return view('owner.form.gestor');
-});
-
+/*
+old
+*/
 Route::get('/owner/franchise/new', function()
 {
 	return view('owner.form.franchise');
-});
-
-Route::get('/owner/franchise/list', function()
-{
-	return view('owner.table.franchise');
 });
 
 Route::get('/franchise/cliente/new', function()

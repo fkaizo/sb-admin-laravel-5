@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function pessoa(){
+        return $this->belongsTo('App\Models\Pessoa', 'email', 'email');
+    }
+
+    public function isOwnerManager(){
+        if($this->pessoa->ownerManager->count() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public function isFranchiseManager(){
+        if($this->pessoa->FranchiseManager->count() > 0){
+            return true;
+        }
+        return false;
+    }
 }
