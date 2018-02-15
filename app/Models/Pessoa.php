@@ -9,7 +9,7 @@ class Pessoa extends Model
     protected $table = "pessoa";
 
     public function endereco(){
-        return $this->hasOne("App\Models\Endereco", "id", "id_endereco");
+        return $this->belongsTo("App\Models\Endereco", "id_endereco", "id");
     }
 
     public function telefones(){
@@ -21,7 +21,7 @@ class Pessoa extends Model
     }
 
     public function foto(){
-        return $this->hasOne("App\Models\Foto", "id", "id_foto");
+        return $this->belongsTo("App\Models\Foto", "id_foto", "id");
     }
 
     public function ownerManager(){

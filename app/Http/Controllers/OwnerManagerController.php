@@ -7,10 +7,11 @@ use App\Models\Owner;
 
 class OwnerManagerController extends Controller
 {
-
+    private $owner;
     public function __construct()
     {
         $this->middleware(['auth','ownerManger']);
+        $this->owner = Owner::find(1);
     }
 
     /**
@@ -20,12 +21,13 @@ class OwnerManagerController extends Controller
      */
     public function index()
     {
-        $owner = Owner::find(1);
-        $managers = $owner->managers()->paginate(10);
+        $pag = 10;
+        $owner = $this->owner;
+        $managers = $owner->managers()->paginate($pag);
         return view('owner.table.gestor')
             ->with(compact('owner'))
             ->with(compact('managers'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * $pag);
     }
 
     /**
@@ -35,7 +37,9 @@ class OwnerManagerController extends Controller
      */
     public function create()
     {
-        return view('owner.form.gestor');
+        $owner = $this->owner;
+        return view('owner.form.gestor')
+            ->with(compact('owner'));
     }
 
     /**
@@ -46,7 +50,58 @@ class OwnerManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'nome' => 'required|max:255',
+            'cpf' => 'required',
+            'email' => 'required',
+            'cep' => 'required',
+            'logradouro' => 'required',
+            'numero' => 'required',
+            'cidade' => 'required',
+            'estado' => 'required',
+            'telefone' => 'required|min:1',
+        ]);
+
+        $foto = new \App\Models\Foto;
+        $foto->imagem = $request['foto'];
+
+        $endereco = new \App\Models\Endereco;
+        $endereco->cep = $request['cep'];
+        $endereco->logradouro = $request['logradouro'];
+        $endereco->numero = $request['numero'];
+        $endereco->complemento = $request['complemento'];
+        $endereco->cidade = $request['cidade'];
+        $endereco->estado = $request['estado'];
+
+        $pessoa = new \App\Models\Pessoa;
+        $pessoa->nome = $request['nome'];
+        $pessoa->sobrenome = $request['sobrenome'];
+        $pessoa->cpf = $request['cpf'];
+        $pessoa->email = $request['email'];
+
+        $pessoa->save();
+
+        $foto->save();
+        $foto->pessoa()->save($pessoa);
+
+        $endereco->save();
+        $endereco->pessoa()->save($pessoa);
+
+        foreach($request['telefone'] as $telefone){
+            if(!empty($telefone)){
+                $temp = new \App\Models\Telefone;
+                $temp->numero = $telefone;
+                $temp->save();
+                $pessoa->telefones()->attach($temp);
+            }
+        }
+
+        $owner = $this->owner;
+        $pessoa->ownerManager()->save($owner);    
+        $pessoa->save();
+
+        return redirect('ownerManager')->with('success', $pessoa->id);;
     }
 
     /**
@@ -57,7 +112,12 @@ class OwnerManagerController extends Controller
      */
     public function show($id)
     {
-        //
+        $owner = $this->owner;
+        $pessoa = \App\Models\Pessoa::findOrFail($id);
+
+        return view("owner.show.gestor")
+            ->with(compact('pessoa'))
+            ->with(compact('owner'));
     }
 
     /**

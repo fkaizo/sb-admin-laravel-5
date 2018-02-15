@@ -15,7 +15,6 @@ class DashboardController extends Controller
     
     public function index(){
         $owner = Owner::find(1);
-
         $franchiseCount = $owner->franchises()->count();
 
         return view('home')

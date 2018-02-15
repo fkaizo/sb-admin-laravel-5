@@ -13,9 +13,9 @@
 	<meta content="" name="author"/>
 
 	<link rel="stylesheet" href="{{ mix("assets/stylesheets/styles.css") }}" />
+	<script src="{{ mix("assets/scripts/frontend.js") }}" type="text/javascript"></script>
 </head>
 <body>
 	@yield('body')
-	<script src="{{ mix("assets/scripts/frontend.js") }}" type="text/javascript"></script>
 </body>
 </html>
