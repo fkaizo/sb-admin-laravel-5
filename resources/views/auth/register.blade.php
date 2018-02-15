@@ -1,6 +1,5 @@
-@extends('app')
-
-@section('content')
+@extends('layouts.plane') @section('body')
+<p>&nbsp;</p>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -18,7 +17,7 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/register">
+					<form class="form-horizontal" role="form" method="POST" action="/register">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -62,4 +61,3 @@
 		</div>
 	</div>
 </div>
-@endsection

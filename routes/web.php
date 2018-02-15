@@ -10,11 +10,15 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', 'DashboardController@index')->name("home");
 
-Route::get('/', function()
-{
-	return view('home');
-});
+//auth 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Auth::routes();
+
+/*
+ *  OLD
+ */
 
 Route::get('/charts', function()
 {
@@ -65,11 +69,6 @@ Route::get('/notifications', function()
 Route::get('/blank', function()
 {
 	return view('blank');
-});
-
-Route::get('/login', function()
-{
-	return view('login');
 });
 
 Route::get('/documentation', function()
